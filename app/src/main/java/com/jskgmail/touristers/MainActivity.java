@@ -1,6 +1,7 @@
 package com.jskgmail.touristers;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -111,20 +113,42 @@ else
         start();
 
 
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        compass_img = (ImageView) findViewById(R.id.img_compass);
+        txt_compass = (TextView) findViewById(R.id.txt_azimuth);
+        sound = MediaPlayer.create(this,R.raw.diwan);
+        Button addon = (Button) findViewById(R.id.addon);
+
+
+        start();
+
+        scanWifiList();
+
+        addon.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the numbers category is clicked on.
+            @Override
+            public void onClick(View view) {
+                Intent addon = new Intent(MainActivity.this, Addon.class);
+
+                // Start the new activity
+                startActivity(addon);
+            }
+        });
+
         final ImageView play=findViewById(R.id.imageView4);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (playpause==0)
-                {playpause=1;
+                if (playpause == 0) {
+                    playpause = 1;
                     play.setImageResource(R.drawable.ic_pause_black_24dp);
-                    sound.start();}
-                else
-                {
-                    playpause=0;
+                    sound.start();
+                } else {
+                    playpause = 0;
                     sound.stop();
+                    sound=MediaPlayer.create(getApplicationContext(), R.raw.diwan);
                     //    sound.release();
-                    play.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                    play.setImageResource(R.drawable.ic_play_circle_filled_black_24dp);
 
                 }
 
@@ -392,6 +416,8 @@ else
         super.onResume();
         start();
     }
+
+
 
 
 
