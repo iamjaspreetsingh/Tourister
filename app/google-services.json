@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "485624224104",
+    "firebase_url": "https://touristers-9f42f.firebaseio.com",
+    "project_id": "touristers-9f42f",
+    "storage_bucket": "touristers-9f42f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485624224104:android:cb325d9f2d1f5495",
+        "android_client_info": {
+          "package_name": "com.jskgmail.touristers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485624224104-2a5kfs7n54efveunsugqhlnn8g7ird1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jskgmail.touristers",
+            "certificate_hash": "4dd6f8c676ed528cf639a2785aec3fefd2c7c09f"
+          }
+        },
+        {
+          "client_id": "485624224104-9n34el5rh6s63trnp0sbejec7pdvshkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJbZ1ZnlJGzfhnY_fcmKFQXmnso1rp_lg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485624224104-9n34el5rh6s63trnp0sbejec7pdvshkq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
