@@ -109,7 +109,6 @@ finish();
             }
 
             sound2.start();
-
             person.setText("MAHARAJA GANGA SINGH JI");
             ganga.setImageResource(R.drawable.ganga);
         } else if (mAzimuth < 350 && mAzimuth >= 170) {

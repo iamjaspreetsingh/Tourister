@@ -59,7 +59,7 @@
         android:fontFamily="@font/allerta_stencil"
         android:gravity="center"
         android:padding="25dp"
-        android:text="DIWAN-E-KHAS COURT"
+        android:text="SUBSITE I"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -123,11 +123,19 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="202dp"
-        android:layout_height="194dp"
+        android:layout_height="184dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp"
         app:srcCompat="@drawable/ic_play_circle_filled_black_24dp"
         tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:text="Long click on icon to get instant directions" />
 
 </RelativeLayout>

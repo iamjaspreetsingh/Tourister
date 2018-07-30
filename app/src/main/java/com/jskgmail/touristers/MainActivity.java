@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView txt_compass;
     private int playpause=0;
     int mAzimuth;
+    TextView tt;
+    int cc=0;
+
     private SensorManager mSensorManager;
     private Sensor mRotationV, mAccelerometer, mMagnetometer;
     boolean haveSensor = false, haveSensor2 = false;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private boolean mLastAccelerometerSet = false;
     private boolean mLastMagnetometerSet = false;
     MediaPlayer sound = null;
+    MediaPlayer sound1 = null;
 
     FirebaseDatabase database ;
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             int value1,value2;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         compass_img = (ImageView) findViewById(R.id.img_compass);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
         sound = MediaPlayer.create(this,R.raw.t);
-
+        sound1 = MediaPlayer.create(this, R.raw.digifest);
 
          database = FirebaseDatabase.getInstance();
 
@@ -116,7 +121,7 @@ else
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.img_compass);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
-        sound = MediaPlayer.create(this,R.raw.diwan);
+        sound = MediaPlayer.create(this,R.raw.subsite1);
         Button addon = (Button) findViewById(R.id.addon);
 
 
@@ -139,14 +144,17 @@ else
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 if (playpause == 0) {
                     playpause = 1;
                     play.setImageResource(R.drawable.ic_pause_black_24dp);
-                    sound.start();
-                } else {
+                        sound.start();
+                     } else {
                     playpause = 0;
                     sound.stop();
-                    sound=MediaPlayer.create(getApplicationContext(), R.raw.diwan);
+                    sound=MediaPlayer.create(getApplicationContext(), R.raw.subsite1);
                     //    sound.release();
                     play.setImageResource(R.drawable.ic_play_circle_filled_black_24dp);
 
@@ -154,11 +162,45 @@ else
 
             }
         });
+
+        play.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+go();
+
+
+
+                return false;
+            }
+        });
     }
 
+void go()
+{
+    LayoutInflater inflater = getLayoutInflater();
+    View alertLayout = inflater.inflate(R.layout.instantdir, null);
+    final ImageView canteen=alertLayout.findViewById(R.id.can);
+    final ImageView wash=alertLayout.findViewById(R.id.wash);
+    final ImageView exit=alertLayout.findViewById(R.id.exit);
+
+    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+    // this is set the view from XML inside AlertDialog
+    alert.setView(alertLayout);
+    // disallow cancel of AlertDialog on click of back button and outside touch
+
+    AlertDialog dialog = alert.create();
+    dialog.show();
+
+}
 
 
-    private void scanWifiList() {
+
+
+
+
+    private void scanWifiList1() {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(getApplicationContext().WIFI_SERVICE);
         if (wifiManager.isWifiEnabled()) {
             final WifiInfo wifiInfo = wifiManager.getConnectionInfo();
@@ -257,6 +299,99 @@ else
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void scanWifiList() {
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(getApplicationContext().WIFI_SERVICE);
+        if (wifiManager.isWifiEnabled())
+        {
+            final WifiInfo wifiInfo=wifiManager.getConnectionInfo();
+
+
+            new Handler().postDelayed(new Runnable() {
+
+                /*
+                 * Showing splash screen with a timer. This will be useful when you
+                 * want to show case your app logo / company
+                 */
+
+                @Override
+                public void run() {
+                    // This method will be executed once the timer is over
+                    // Start your app main activity
+
+                    tt=findViewById(R.id.textView3);
+//                    Toast.makeText(getApplicationContext(),wifiInfo.getRssi()+"a",Toast.LENGTH_SHORT).show();
+
+                    if ((Math.abs(wifiInfo.getRssi())<40)&&(Math.abs(wifiInfo.getRssi())>5))
+                    {
+                        tt.setText("SUBSITE I");
+cc=0;
+                    }
+
+                    else if ((Math.abs(wifiInfo.getRssi())>40)&&(Math.abs(wifiInfo.getRssi())<100))
+                    {
+                        tt.setText("SUBSITE II");
+cc=1;
+                    }
+                    else
+                        tt.setText("You are out!!!");
+                    cc=2;
+                    scanWifiList();
+                    // close this activity
+
+                }
+            }, 2000);
+        }
+    }
+
 
 
 
